@@ -4,7 +4,7 @@ import { ChatInput } from "./ChatInput";
 import { useChat } from "@/contexts/ChatContext";
 import { GoKebabHorizontal } from "react-icons/go";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { EditModal } from "./EditModal";
 
 export const ChatMessages = () => {
@@ -20,6 +20,12 @@ export const ChatMessages = () => {
         user: "",
         text: "",
     });
+
+    useEffect(() => {
+        const messageArea = document.querySelector("#messageArea");
+        const scrollH = messageArea?.scrollHeight;
+        if (scrollH) messageArea.scrollTo(0, scrollH);
+    }, [chatCtx?.chat]);
 
     const handleOpenModal = (key: number) => {
         setBtnClicked(key);
@@ -62,8 +68,10 @@ export const ChatMessages = () => {
         <div className="flex flex-col gap-2 h-[90vh]">
             <ChatHeader />
             <div
+                id="messageArea"
                 className="p-3 flex-1 flex flex-col gap-2 overflow-y-auto"
-                onClick={handleCloseBtnModal}>
+                onClick={handleCloseBtnModal}
+            >
                 {chatCtx?.chat.map((item, key) => (
                     <div
                         key={item.id}
@@ -74,11 +82,13 @@ export const ChatMessages = () => {
                                 : "bg-zinc-700 text-left self-start"
                         }
                     `}
-                        onClick={handleCloseBtnModal}>
+                        onClick={handleCloseBtnModal}
+                    >
                         <p className="text-left">{item.text}</p>
                         <button
                             onClick={() => handleOpenModal(key)}
-                            className="absolute text-white text-xl top-0 right-2 invisible opacity-0 transition-all ease-in duration-300 group-hover:visible group-hover:opacity-100">
+                            className="absolute text-white text-xl top-0 right-2 invisible opacity-0 transition-all ease-in duration-300 group-hover:visible group-hover:opacity-100"
+                        >
                             <GoKebabHorizontal />
                         </button>
                         {modalBtn && btnClicked === key && (
@@ -89,15 +99,18 @@ export const ChatMessages = () => {
                                     ? "top-2 left-[-50px]"
                                     : "top-2 right-[-50px]"
                             }
-                            `}>
+                            `}
+                            >
                                 <div
                                     onClick={() => handleOpenEditModal(item.id)}
-                                    className="hover:underline cursor-pointer">
+                                    className="hover:underline cursor-pointer"
+                                >
                                     Editar
                                 </div>
                                 <div
                                     onClick={() => handleRemoveMessage(item.id)}
-                                    className="hover:underline cursor-pointer">
+                                    className="hover:underline cursor-pointer"
+                                >
                                     Apagar
                                 </div>
                             </div>
