@@ -16,13 +16,12 @@ export const InputName = () => {
         if (e.key === "Enter") handleSetUser();
     };
 
-
     return (
         <div className="mt-14">
-            <div className="p-3 bg-zinc-200 rounded-full flex items-center dark:bg-transparent dark:border dark:border-white/25">
+            <div className="p-3 bg-zinc-200 rounded-full flex gap-3 w-full items-center dark:bg-transparent dark:border dark:border-white/25">
                 <input
                     type="text"
-                    className="outline-none bg-transparent flex-1 px-2 text-lg"
+                    className="pl-2 outline-none bg-transparent flex-1 max-w-[80%]  sm:max-w-none text-lg"
                     placeholder="Digite seu nome"
                     value={inputName}
                     onChange={(e) => setInputName(e.target.value)}
@@ -31,7 +30,8 @@ export const InputName = () => {
                 {inputName !== "" && (
                     <button
                         onClick={handleSetUser}
-                        className="px-2 font-bold flex items-center justify-center gap-2">
+                        className="px-1 bg-transparent font-bold flex items-center justify-center gap-2"
+                    >
                         Enviar
                     </button>
                 )}

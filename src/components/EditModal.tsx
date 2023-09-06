@@ -27,13 +27,17 @@ export const EditModal = ({ onCloseModal, onChange, actualMsg }: Props) => {
             <div className="max-w-md w-full bg-slate-400 p-4 rounded-md relative overflow-hidden">
                 <button
                     onClick={onCloseModal}
-                    className="w-8 h-8 flex items-center justify-center text-4xl text-white absolute top-0 right-0 hover:bg-red-600">
+                    className="w-8 h-8 flex items-center justify-center text-4xl text-white absolute top-0 right-0 hover:bg-red-600"
+                >
                     <BsX />
                 </button>
-                <div className="mt-6 mb-3 p-3 flex items-center gap-3 justify-between bg-zinc-100 rounded-md text-white dark:border dark:border-white/25 dark:bg-transparent">
+                <div className="text-xl text-white mb-3 font-bold tracking-wide uppercase">
+                    Editar
+                </div>
+                <div className="mb-3 p-3 flex items-center gap-3 justify-between bg-zinc-100 rounded-md text-white dark:border dark:border-white/25 dark:bg-black">
                     <input
                         type="text"
-                        className="text-black bg-transparent text-lg flex-1 outline-none pl-3 dark:text-white"
+                        className="text-black bg-transparent text-lg flex-1 max-w-[80%] sm:max-w-none outline-none pl-3 dark:text-white"
                         value={actualMsg.text}
                         onChange={(e) =>
                             onChange({ ...actualMsg, text: e.target.value })
@@ -42,7 +46,8 @@ export const EditModal = ({ onCloseModal, onChange, actualMsg }: Props) => {
                     />
                     <button
                         onClick={handleEditMessage}
-                        className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-lg">
+                        className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-lg"
+                    >
                         <BsSend />
                     </button>
                 </div>
