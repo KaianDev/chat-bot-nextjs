@@ -24,9 +24,6 @@ export const ChatInput = ({ name }: Props) => {
 
     return (
         <div className="p-3 flex items-center gap-3 justify-between bg-zinc-100 rounded-full text-white dark:border dark:border-white/25 dark:bg-transparent">
-            <button className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-2xl">
-                <IoMdAdd />
-            </button>
             <input
                 type="text"
                 className="text-black bg-transparent text-lg flex-1 outline-none dark:text-white"

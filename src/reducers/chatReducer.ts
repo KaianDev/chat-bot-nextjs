@@ -23,7 +23,11 @@ type EditAction = {
     };
 };
 
-type Actions = AddAction | RemoveAction | EditAction;
+type ClearAllAction = {
+    type: "clear";
+};
+
+type Actions = AddAction | RemoveAction | EditAction | ClearAllAction;
 
 export const chatReducer = (chat: Message[], action: Actions) => {
     switch (action.type) {
@@ -45,6 +49,8 @@ export const chatReducer = (chat: Message[], action: Actions) => {
                 }
                 return msg;
             });
+        case "clear":
+            return [];
         default:
             return chat;
     }

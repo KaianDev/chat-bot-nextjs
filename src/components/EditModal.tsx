@@ -23,7 +23,7 @@ export const EditModal = ({ onCloseModal, onChange, actualMsg }: Props) => {
     };
 
     return (
-        <div className="fixed top-0 right-0 left-0 bottom-0 flex justify-center items-center bg-black/60">
+        <div className="fixed top-0 right-0 left-0 bottom-0 flex justify-center items-center bg-black/60 p-2">
             <div className="max-w-md w-full bg-slate-400 p-4 rounded-md relative overflow-hidden">
                 <button
                     onClick={onCloseModal}
