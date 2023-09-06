@@ -19,7 +19,7 @@ export const InputName = () => {
 
     return (
         <div className="mt-14">
-            <div className="p-3 bg-zinc-100 rounded-full flex items-center dark:bg-transparent dark:border dark:border-white/25">
+            <div className="p-3 bg-zinc-200 rounded-full flex items-center dark:bg-transparent dark:border dark:border-white/25">
                 <input
                     type="text"
                     className="outline-none bg-transparent flex-1 px-2 text-lg"

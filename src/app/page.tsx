@@ -3,19 +3,20 @@
 import { Header } from "@/components/Header";
 import { Home } from "@/components/Home";
 import { Layout } from "@/components/Layout";
+
 import { ChatProvider } from "@/contexts/ChatContext";
 import { UserProvider } from "@/contexts/UserContext";
 
 const Page = () => {
     return (
-        <Layout>
-            <UserProvider>
-                <ChatProvider>
+        <UserProvider>
+            <ChatProvider>
+                <Layout>
                     <Header />
                     <Home />
-                </ChatProvider>
-            </UserProvider>
-        </Layout>
+                </Layout>
+            </ChatProvider>
+        </UserProvider>
     );
 };
 
