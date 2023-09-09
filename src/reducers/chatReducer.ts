@@ -27,7 +27,17 @@ type ClearAllAction = {
     type: "clear";
 };
 
-type Actions = AddAction | RemoveAction | EditAction | ClearAllAction;
+type LikeAction = {
+    type: "like";
+    payload: { id: string };
+};
+
+type Actions =
+    | AddAction
+    | RemoveAction
+    | EditAction
+    | ClearAllAction
+    | LikeAction;
 
 export const chatReducer = (chat: Message[], action: Actions) => {
     switch (action.type) {
@@ -38,6 +48,7 @@ export const chatReducer = (chat: Message[], action: Actions) => {
                     id: uuidv4(),
                     user: action.payload.user,
                     text: action.payload.text,
+                    active: false,
                 },
             ];
         case "remove":
@@ -46,6 +57,13 @@ export const chatReducer = (chat: Message[], action: Actions) => {
             return chat.filter((msg) => {
                 if (msg.id === action.payload.id) {
                     msg.text = action.payload.newText;
+                }
+                return msg;
+            });
+        case "like":
+            return chat.map((msg) => {
+                if (msg.id === action.payload.id) {
+                    msg.active = !msg.active;
                 }
                 return msg;
             });

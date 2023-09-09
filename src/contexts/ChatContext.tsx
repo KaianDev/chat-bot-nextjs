@@ -6,6 +6,7 @@ type ChatContext = {
     addMessage: (user: string, text: string) => void;
     removeMessage: (id: string) => void;
     editMessage: (id: string, newText: string) => void;
+    likeMessage: (id: string) => void;
     clearAllMessage: () => void;
 };
 
@@ -26,6 +27,10 @@ export const ChatProvider = ({ children }: { children: ReactNode }) => {
         dispatch({ type: "edit", payload: { id, newText } });
     };
 
+    const likeMessage = (id: string) => {
+        dispatch({ type: "like", payload: { id } });
+    };
+
     const clearAllMessage = () => {
         dispatch({ type: "clear" });
     };
@@ -38,6 +43,7 @@ export const ChatProvider = ({ children }: { children: ReactNode }) => {
                 removeMessage,
                 editMessage,
                 clearAllMessage,
+                likeMessage,
             }}>
             {children}
         </ChatContext.Provider>

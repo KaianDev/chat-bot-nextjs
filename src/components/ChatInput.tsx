@@ -1,7 +1,7 @@
 import { BsSend } from "react-icons/bs";
-import { IoMdAdd } from "react-icons/io";
 import { useState, KeyboardEvent } from "react";
 import { useChat } from "@/contexts/ChatContext";
+import { useScroll } from "@/contexts/ScrollContext";
 
 type Props = {
     name: string;
@@ -10,11 +10,14 @@ type Props = {
 export const ChatInput = ({ name }: Props) => {
     const [message, setMessage] = useState("");
     const chatCtx = useChat();
+    const scrollCtx = useScroll();
 
     const handleSendMessage = () => {
         if (message.trim() !== "") {
             chatCtx?.addMessage(name, message.trim());
             setMessage("");
+            
+            scrollCtx?.setToRoll(true);
         }
     };
 
